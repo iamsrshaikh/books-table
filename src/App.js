@@ -1,8 +1,11 @@
 import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
-import "./App.css";
+
 import axios from "axios";
+
 import InputBox from "./components/InputBox";
 import Spinner from "./components/Spinner";
+
+import "./App.css";
 
 const BookTable = React.lazy(() => import("./components/BookTable"));
 
@@ -97,19 +100,22 @@ function App() {
     );
   }, [booksData, debounceSearchTerm]);
 
-
   return (
     <div className="App">
       {booksData && (
         <>
           <InputBox searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          <Suspense fallback={<div><Spinner /></div>}>
+          <Suspense
+            fallback={
+              <div>
+                <Spinner />
+              </div>
+            }
+          >
             {debounceSearchTerm && filteredData.length === 0 ? (
               <div className="notFound">Data Not Found</div>
             ) : (
-              <BookTable
-                booksData={filteredData}
-              />
+              <BookTable booksData={filteredData} />
             )}
           </Suspense>
 

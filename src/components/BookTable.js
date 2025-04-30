@@ -1,12 +1,20 @@
-import React, {useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 
-import "./BookTable.css";
 import SortArrow from "./SortArrow";
 
+import "./BookTable.css";
+
 export const SORT_STATES = {
-  ASC: 'ASC',
-  DESC: 'DESC',
-  CLEAR: 'CLEAR',
+  ASC: "ASC",
+  DESC: "DESC",
+  CLEAR: "CLEAR",
+};
+
+export const TABLE_HEADINGS = {
+  BOOK_NAME: "Book Name",
+  AUTHOR: "Author",
+  PRICE: "Price",
+  BOOK_IMAGE: "Book Image",
 };
 
 const BookTable = ({ booksData }) => {
@@ -30,7 +38,7 @@ const BookTable = ({ booksData }) => {
   const sortedData = useMemo(() => {
     if (sortState === SORT_STATES.CLEAR) return booksData;
 
-    const sortedCopy = [...booksData]; 
+    const sortedCopy = [...booksData];
 
     return sortState === SORT_STATES.ASC
       ? sortedCopy.sort((a, b) => a.price - b.price)
@@ -42,13 +50,13 @@ const BookTable = ({ booksData }) => {
       <table>
         <thead>
           <tr>
-            <th>Book Name</th>
-            <th>Author</th>
+            <th>{TABLE_HEADINGS.BOOK_NAME}</th>
+            <th>{TABLE_HEADINGS.AUTHOR}</th>
             <th className="price">
-              <div>Price</div>
+              <div>{TABLE_HEADINGS.PRICE}</div>
               <SortArrow sortState={sortState} onClick={toggleSort} />
             </th>
-            <th>Book Image</th>
+            <th>{TABLE_HEADINGS.BOOK_IMAGE}</th>
           </tr>
         </thead>
 

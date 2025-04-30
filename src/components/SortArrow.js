@@ -1,11 +1,10 @@
 import React from "react";
-import "./SortArrow.css";
 
 import arrow from "../assets/filter_arrow.svg";
 import arrowEnabled from "../assets/filter_arrow_enabled.svg";
 import { SORT_STATES } from "./BookTable";
 
-
+import "./SortArrow.css";
 
 const SortArrow = ({ sortState, onClick }) => {
   return (
