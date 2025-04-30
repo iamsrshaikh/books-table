@@ -63,7 +63,7 @@ function App() {
         }
       },
       {
-        threshold: 1,
+        threshold: 0.75,
         root: null,
         rootMargin: "0px",
       }
